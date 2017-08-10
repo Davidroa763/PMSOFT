@@ -1,0 +1,23 @@
+<md-toolbar color="primary">
+  <span><h2>Hola {{user.firstName}}!</h2></span>
+  <span class="example-spacer"></span>
+  <a md-mini-fab [routerLink]="['/login']"><md-icon class="item" mdTooltip="Salir">backspace</md-icon></a>
+</md-toolbar>
+
+<div class="formulario">
+  <md-card class="formulario-item">
+      <md-toolbar class="color">
+        <a md-icon-button [routerLink]="['/home']"><md-icon  mdTooltip="Inicio">home</md-icon></a>
+        <a md-icon-button [routerLink]="['/sensibilizacion']"><md-icon  mdTooltip="Sensibilizacion">description</md-icon></a>
+        <a md-icon-button [routerLink]="['/censotributario']"><md-icon  mdTooltip="Censo Tributario">description</md-icon></a>
+        <span class="example-spacer"></span>
+      </md-toolbar> 
+      <md-card class="formulario-item">
+        <h1>INICIO DE CENSO</h1>
+      </md-card>
+  </md-card>
+</div>
+
+<md-toolbar color="primary">
+  <span>PIE DE PAGINA</span>
+</md-toolbar>
