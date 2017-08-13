@@ -36,17 +36,17 @@ export class CensoTributarioComponent{
 		this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 		this.titulo = 'Crear un nuevo dato';
     this.fechaActual = new Date();
-	this.datos_ = new CensoTributarioModel(null,null,null,null,null,
-		null,null,null,null,null,null,null,null,null,null,null,null,
-		null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-		null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-		null,null,null,null,null,null,
-		null,null,null,null,null,null,
-		null,
-		null,null,null,
-		null,null,null,null,
-		null,null,null,null,
-		null,null,null,null,null,);
+	this.datos_ = new CensoTributarioModel(new Date,'',0,0,0,
+					'','','','',0,0,'','','',0,0,'',
+					'','','',0,'',0,0,'',0,'','','','','','',0,
+					'',new Date,'','','','',0,'','','','','','','',0,'',
+					'',0,'',0,'',0,
+					'','','','','','',
+					'',
+					'',new Date,'',
+					'',0,'','',
+					'',0,'','',
+					'',new Date,'',new Date,'',);
   }
 
 	ngOnInit(){
@@ -70,17 +70,17 @@ export class CensoTributarioComponent{
 		response => {
 			if(response.code == 200){
 				this.SnackOn(message, action)
-				this.datos_ = new CensoTributarioModel(null,null,null,null,null,
-					null,null,null,null,null,null,null,null,null,null,null,null,
-					null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-					null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-					null,null,null,null,null,null,
-					null,null,null,null,null,null,
-					null,
-					null,null,null,
-					null,null,null,null,
-					null,null,null,null,
-					null,null,null,null,null,);
+				this.datos_ = new CensoTributarioModel(new Date,'',0,0,0,
+					'','','','',0,0,'','','',0,0,'',
+					'','','',0,'',0,0,'',0,'','','','','','',0,
+					'',new Date,'','','','',0,'','','','','','','',0,'',
+					'',0,'',0,'',0,
+					'','','','','','',
+					'',
+					'',new Date,'',
+					'',0,'','',
+					'',0,'','',
+					'',new Date,'',new Date,'',);
 				
 			}else{
 				console.log(response);
@@ -102,17 +102,17 @@ export class CensoTributarioComponent{
 		response => {
 			if(response.code == 200){
 				this.SnackOn(message, action)
-				this.datos_ = new CensoTributarioModel(null,null,null,null,null,
-					null,null,null,null,null,null,null,null,null,null,null,null,
-					null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-					null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-					null,null,null,null,null,null,
-					null,null,null,null,null,null,
-					null,
-					null,null,null,
-					null,null,null,null,
-					null,null,null,null,
-					null,null,null,null,null,);
+				this.datos_ = new CensoTributarioModel(new Date,'',0,0,0,
+					'','','','',0,0,'','','',0,0,'',
+					'','','',0,'',0,0,'',0,'','','','','','',0,
+					'',new Date,'','','','',0,'','','','','','','',0,'',
+					'',0,'',0,'',0,
+					'','','','','','',
+					'',
+					'',new Date,'',
+					'',0,'','',
+					'',0,'','',
+					'',new Date,'',new Date,'',);
 				
 			}else{
 				console.log(response);

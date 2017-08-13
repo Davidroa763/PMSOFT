@@ -16,6 +16,7 @@ export class SensibilizacionService{
 	}
 	adddatos(sensibilizacion_data: SensibilizacionModel){
 		let json = JSON.stringify(sensibilizacion_data);
+		console.log(json);
 		let params = 'json='+json;
 		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
 
