@@ -36,7 +36,7 @@ export class SensibilizacionComponent{
 		this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 		this.titulo = 'Crear un nuevo dato';
 		this.fechaActual = new Date();
-		this.datos_ = new SensibilizacionModel('','',new Date,'','','','',0,'','',new Date(0,0,0),'',new Date(0,0,0));
+		this.datos_ = new SensibilizacionModel(null,null,(this.fechaActual),null,null,null,null,null,null,null,null,null,null);
 	}
 
 	ngOnInit(){
@@ -58,13 +58,13 @@ export class SensibilizacionComponent{
 		response => {
 			if(response.code == 200){
 				this.SnackOn(message, action)
-				this.datos_.Fecha = new Date;
+				this.datos_.Fecha = (this.fechaActual);
 				this.datos_.Nobre_Establecimiento = ' ';
 				this.datos_.Nobre_Propietario = ' ';
 				this.datos_.Direccion_Establecimiento = ' ';
 				this.datos_.Actividad_Economica = ' ';
 				this.datos_.Telefono_Propietario = 0;
-				this.datos_.Firma = ' ';
+				this.datos_.Firma = null;
 				
 			}else{
 				console.log(response);
@@ -90,4 +90,58 @@ export class SensibilizacionComponent{
 		duration: 2000,
 		});
 	};
+
+	firmas = [
+		{value: 'SI', viewValue: 'SI'},
+		{value: 'NO', viewValue: 'NO'}
+	  ];
+	municipios = [
+		{value: 'Anolaima', viewValue: 'Anolaima'},
+		{value: 'Arbelaez', viewValue: 'Arbeláez'},
+		{value: 'Caparrapi', viewValue: 'Caparrapí'},
+		{value: 'Choachi', viewValue: 'Choachí'},
+		{value: 'Cucunuba', viewValue: 'Cucunubá'},
+		{value: 'Fomeque', viewValue: 'Fomeque'},
+		{value: 'Gachala', viewValue: 'Gachalá'},
+		{value: 'Gachancipa', viewValue: 'Gachancipá'},
+		{value: 'Guataqui', viewValue: 'Guataquí'},
+		{value: 'Jerusalen', viewValue: 'Jerusalén'},
+		{value: 'La Calera', viewValue: 'La Calera'},
+		{value: 'La Vega', viewValue: 'La Vega'},
+		{value: 'Medina', viewValue: 'Medina'},
+		{value: 'Nariño', viewValue: 'Nariño'},
+		{value: 'Pacho', viewValue: 'Pacho'},
+		{value: 'Paratebueno', viewValue: 'Paratebueno'},
+		{value: 'Pasca', viewValue: 'Pasca'},
+		{value: 'San Bernardo', viewValue: 'San Bernardo'},
+		{value: 'San Cayetano', viewValue: 'San Cayetano'},
+		{value: 'San Juan de Rioseco', viewValue: 'San Juan de Rioseco'},
+		{value: 'Sibate', viewValue: 'Sibaté'},
+		{value: 'Sopo', viewValue: 'Sopó'},
+		{value: 'Suesca', viewValue: 'Suesca'},
+		{value: 'Supata', viewValue: 'Supatá'},
+		{value: 'Sutatausa', viewValue: 'Sutatausa'},
+		{value: 'Tibacuy', viewValue: 'Tibacuy'},
+		{value: 'Tocaima', viewValue: 'Tocaima'},
+		{value: 'Topaipi', viewValue: 'Topaipí'},
+		{value: 'Zipaquira', viewValue: 'Zipaquirá'}
+	  ];
+
+	operadors = [
+		{value: 'Christian Andres Gonzalez Vanegas', viewValue: 'Christian Andrés González Vanegas'},
+		{value: 'Estefania Hernandez Pinzon', viewValue: 'Estefanía Hernández Pinzón'},
+		{value: 'Giselle Fonseca Vergel', viewValue: 'Giselle Fonseca Vergel'},
+		{value: 'Jorge Albeiro Torres Gomez', viewValue: 'Jorge Albeiro Torres Gómez'},
+		{value: 'Juan Carlos Pachon Sierra', viewValue: 'Juan Carlos Pachón Sierra'},
+		{value: 'Judy Andrea Pinzon Vega', viewValue: 'Judy Andrea Pinzón Vega'},
+		{value: 'Luisa Fernanda Colorado Osorio', viewValue: 'Luisa Fernanda Colorado Osorio'},
+		{value: 'Maria Amparo Montaño Fuentes', viewValue: 'María Amparo Montaño Fuentes'},
+		{value: 'Maria Eugenia Agudelo Galeano', viewValue: 'María Eugenia Agudelo Galeano'},
+		{value: 'Marisol Dias Peña', viewValue: 'Marisol Días Peña'},
+		{value: 'Martha Isabel Suarez Ballen', viewValue: 'Martha Isabel Suarez Ballén'},
+		{value: 'Milton Raul Ramirez Salinas', viewValue: 'Milton Raúl Ramírez Salinas'},
+		{value: 'Nelson Enrique Sabogal Velez', viewValue: 'Nelson Enrique Sabogal Vélez'},
+		{value: 'Nohora Idali Ramos Fernandez', viewValue: 'Nohora Idali Ramos Fernández'},
+		{value: 'Nydia Yaneth Angarita Rios', viewValue: 'Nydia Yaneth Angarita Ríos'}
+	  ];
 }

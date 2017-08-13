@@ -1,6 +1,6 @@
 export class SensibilizacionModel{
 	constructor(
-        public Op: String,
+        public Operador: String,
         public Municipio: String,
         public Fecha: Date,
         public Nobre_Propietario: String,

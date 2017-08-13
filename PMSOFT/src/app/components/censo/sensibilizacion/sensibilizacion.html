@@ -58,16 +58,20 @@
 						<tbody >                          
 							<tr > 
 								<td>	
-									<md-input-container>  							                             
-										<input mdInput placeholder="-" #Operador="ngModel" name="Operador" [(ngModel)]="datos_.Operador" required>                             
-										<span *ngIf="!Operador.valid && Operador.touched" class="label label-danger">obligatorio</span> 	
-									</md-input-container>
+									<md-select placeholder="-" style="width: 300px;" [(ngModel)]="datos_.Operador" name="operador" #operador="ngModel" required>
+										<md-option *ngFor="let operador of operadors" [value]="operador.value">
+												{{ operador.viewValue }}
+										</md-option>
+										<span *ngIf="!operador.valid && operador.touched" class="label label-danger">obligatorio</span>
+									</md-select>
 								</td> 
-								<td>	
-									<md-input-container>  							                             
-										<input mdInput placeholder="-" #municipio="ngModel" name="municipio" [(ngModel)]="datos_.Municipio" required>                             
-										<span *ngIf="!municipio.valid && municipio.touched" class="label label-danger">obligatorio</span> 	
-									</md-input-container>
+								<td>
+									<md-select placeholder="-" style="width: 200px;" [(ngModel)]="datos_.Municipio" name="municipio" #municipio="ngModel" required>
+										<md-option *ngFor="let municipio of municipios" [value]="municipio.value">
+												{{ municipio.viewValue }}
+										</md-option>
+										<span *ngIf="!municipio.valid && municipio.touched" class="label label-danger">obligatorio</span>
+									</md-select>
 								</td> 
 							</tr>
 						</tbody>
@@ -76,7 +80,7 @@
 				</div>
 				</form>
 
-				<form #formProducto="ngForm" (ngSubmit)="onSubmit()">	
+				<form #formProducto="ngForm">	
 				<div class="formulario">
 				<md-card class="formulario-item">                     
 					<table id="mytable">
@@ -107,7 +111,7 @@
 								</td>
 								<td> 						
 										<md-input-container>                
-											<input  mdInput [mdDatepicker]="picker" placeholder="Elige una fecha"
+											<input  mdInput [mdDatepicker]="picker" placeholder="Elige una fecha" disabled ="disabled"
 												#fecha="ngModel" name="fecha" [(ngModel)]="datos_.Fecha"  required />
 												<span *ngIf="!fecha.valid && fecha.touched" class="label label-danger">obligatorio</span>
 											<button mdSuffix [mdDatepickerToggle]="picker"></button>
@@ -146,13 +150,15 @@
 									</md-input-container>
 								</td>
 								<td>	
-									<md-input-container>  							                             
-										<input mdInput maxlength="2" placeholder="-" #firma="ngModel" name="firma" [(ngModel)]="datos_.Firma" required>                             
-										<span *ngIf="!firma.valid && firma.touched" class="label label-danger">obligatorio</span> 	
-									</md-input-container>	
+									<md-select placeholder="Firma" [(ngModel)]="datos_.Firma" name="firma" #firma="ngModel" required>
+										<md-option *ngFor="let firma of firmas" [value]="firma.value">
+												{{ firma.viewValue }}
+										</md-option>
+										<span *ngIf="!firma.valid && firma.touched" class="label label-danger">obligatorio</span>
+									</md-select>
 								</td>
 
-								<a md-icon-button (click)="openSnackBar()" [disabled]="!formProducto.form.valid" class="btn btn-success"><md-icon  mdTooltip="Inicio">archive</md-icon></a>
+								<button md-icon-button (click)="openSnackBar()" [disabled]="!formProducto.form.valid" class="btn btn-success"><md-icon  mdTooltip="Inicio">archive</md-icon></button>
 							
 							</tr>
 						</tbody>
