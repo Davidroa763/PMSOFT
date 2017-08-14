@@ -1,7 +1,7 @@
 ﻿<md-toolbar color="primary">
   <span><h2>Hola {{user.firstName}}!</h2></span>
   <span class="example-spacer"></span>
-  <a md-mini-fab [routerLink]="['/login']"><md-icon class="item" mdTooltip="Salir">backspace</md-icon></a>
+  <a md-mini-fab [routerLink]="['/login']"><md-icon  mdTooltip="Salir">backspace</md-icon></a>
 </md-toolbar>
 
 <div class="formulario">
@@ -12,9 +12,12 @@
       </md-toolbar> 
       <md-card class="formulario-item ">
         <div>
-          <h1>BIENVENIDO</h1>
-          <h1>AL INICIO</h1>
-          <h1>DE PMSOFT</h1>
+          <h1>BIENVENIDO AL INICIO DE PMSOFT</h1>
+          <hr>
+          <h3>Para Continuar Seleccione el icono <md-icon>home</md-icon> En la parte superior.</h3>
+          <hr>
+          <h3>Tenga en cuenta que para salir de PMSOFT he ingresar con otro Usuario,</h3>
+          <h3>Seleccione el siguiente icono <md-icon>backspace</md-icon>. </h3>
         </div>
       </md-card>
   </md-card>

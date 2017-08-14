@@ -7,29 +7,33 @@
 <md-tab-group>
   <md-tab>
     <ng-template md-tab-label>
-      <md-icon class="item" mdTooltip="HOME">home</md-icon>
+      <md-icon class="item" mdTooltip="Inicio Sensibilizacion">home</md-icon>
     </ng-template>
       <div class="formulario">
         <md-card class="formulario-item">
             <md-toolbar class="color">
-              <a md-icon-button [routerLink]="['/censo']"><md-icon  mdTooltip="Inicio">home</md-icon></a>
+              <a md-icon-button [routerLink]="['/censo']"><md-icon  mdTooltip="Inicio Censo">home</md-icon></a>
               <h3 style="width: 80px; -webkit-margin-start: 1.5em; display: flex;">SENSIBILIZACION</h3>
               <span class="example-spacer"></span>
 						</md-toolbar>
 						<md-card class="formulario-item">
 							<h1>INICIO DE SENSIBILIZACION</h1>
+							<hr>
+							<h3>Para volver Seleccione el icono <md-icon>home</md-icon> En la parte superior.</h3>
+							<hr>
+							<h3>Seleccione el icono <md-icon>description</md-icon> En la parte superior Para iniciar.</h3>
 						</md-card>
         </md-card>
       </div>
   </md-tab>
   <md-tab>
     <ng-template md-tab-label>
-      <md-icon class="item" mdTooltip="CENSOS">assignment</md-icon>
+      <md-icon class="item" mdTooltip="Formulario Sensibilizacion">assignment</md-icon>
     </ng-template>
       <div class="formulario">
         <md-card class="formulario-item">
             <md-toolbar class="color">
-              <a md-icon-button [routerLink]="['/censo']"><md-icon  mdTooltip="Inicio">home</md-icon></a>
+              <a md-icon-button [routerLink]="['/censo']"><md-icon  mdTooltip="Inicio Censo">home</md-icon></a>
               <h3 style="width: 80px; -webkit-margin-start: 1.5em; display: flex;">SENSIBILIZACION</h3>
               <span class="example-spacer"></span>
 			</md-toolbar>
@@ -119,8 +123,7 @@
 										<md-datepicker #picker></md-datepicker>	
 								</td>
 								<td>	
-									<md-input-container> 
-										<script type="text/javascript" src="java-script/create_input.js"></script> 							                             
+									<md-input-container> 						                             
 										<input mdInput placeholder="-" #namePro="ngModel" name="namePro" [(ngModel)]="datos_.Nobre_Propietario"  required>                             
 										<span *ngIf="!namePro.valid && namePro.touched" class="label label-danger">obligatorio</span> 	
 									</md-input-container>

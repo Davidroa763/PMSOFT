@@ -7,30 +7,34 @@
 <md-tab-group>
   <md-tab>
     <ng-template md-tab-label>
-      <md-icon class="item" mdTooltip="HOME">home</md-icon>
+      <md-icon class="item" mdTooltip="Inicio ICA">home</md-icon>
     </ng-template>
       <div class="formulario">
         <md-card class="formulario-item">
             <md-toolbar class="color">
-              <a md-icon-button [routerLink]="['/censo']"><md-icon  mdTooltip="Inicio">home</md-icon></a>
-              <h3 style="width: 80px; -webkit-margin-start: 1.5em; display: flex;">SENSIBILIZACION</h3>
+              <a md-icon-button [routerLink]="['/censo']"><md-icon  mdTooltip="Inicio Censo">home</md-icon></a>
+              <h3 style="width: 80px; -webkit-margin-start: 1.5em; display: flex;">CENSO TRIBUTARIO ICA</h3>
               <span class="example-spacer"></span>
 						</md-toolbar>
 						<md-card class="formulario-item">
-							<h1>INICIO DE SENSIBILIZACION</h1>
+              <h1>INICIO DE CENSO TRIBUTARIO ICA</h1>
+              <hr>
+							<h3>Para volver Seleccione el icono <md-icon>home</md-icon> En la parte superior.</h3>
+							<hr>
+							<h3>Seleccione el icono <md-icon>description</md-icon> En la parte superior Para iniciar.</h3>
 						</md-card>
         </md-card>
       </div>
   </md-tab>
   <md-tab>
     <ng-template md-tab-label>
-      <md-icon class="item" mdTooltip="CENSOS">assignment</md-icon>
+      <md-icon class="item" mdTooltip="Formulario ICA">assignment</md-icon>
     </ng-template>
     <div class="formulario">
       <md-card class="formulario-item">
         <md-toolbar class="color">
-          <a md-icon-button [routerLink]="['/censo']"><md-icon  mdTooltip="Inicio">home</md-icon></a>
-          <h2 style="width: 80px; -webkit-margin-start: 1.5em; display: flex;">SENSIBILIZACION</h2>
+          <a md-icon-button [routerLink]="['/censo']"><md-icon  mdTooltip="Inicio Censo">home</md-icon></a>
+          <h2 style="width: 80px; -webkit-margin-start: 1.5em; display: flex;">CENSO TRIBUTARIO ICA</h2>
           <span class="example-spacer"></span>
         </md-toolbar>    
         <hr>
@@ -38,7 +42,7 @@
           <span><h2> ACTUALIZACIÓN INFORMACIÓN INDUSTRIA Y COMERCIO - AVISOS Y TABLEROS </h2></span>
         </md-toolbar>
 				<form #formProducto="ngForm">	
-          <md-card style="height: 1500px">
+          <md-card style="height: 4900px">
             <div style="min-width: 500">  
               <md-card class="formulario-item">
                 <md-toolbar color="primary">
@@ -46,32 +50,34 @@
                 </md-toolbar>
                 FECHA:
                 <md-input-container style="margin-left: 40px;margin-top: 20px;">                
-                  <input  mdInput [mdDatepicker]="picker" placeholder="Elige una fecha" style="width: 200px;"
+                  <input  mdInput [mdDatepicker]="picker" placeholder="Elige una fecha" style="width: 200px;" disabled ="disabled"
                     #fecha="ngModel" name="fecha" [(ngModel)]="datos_.Fecha"  required />
                     <span *ngIf="!fecha.valid && fecha.touched" class="label label-danger">obligatorio</span>
                   <button mdSuffix [mdDatepickerToggle]="picker"></button>
                 </md-input-container>
                 <md-datepicker #picker></md-datepicker>
                 MUNICIPIO:	
-                <md-input-container style="-webkit-margin-start: 5.5em">  							                             
-                  <input mdInput placeholder="-" #municipio="ngModel" name="municipio" [(ngModel)]="datos_.Municipio" style="width: 300px;" required>                             
-                  <span *ngIf="!municipio.valid && municipio.touched" class="label label-danger">obligatorio</span> 	
-                </md-input-container>
+                <md-select placeholder="Municipio" style="width: 200px;" [(ngModel)]="datos_.Municipio" name="municipio" #municipio="ngModel" required>
+                  <md-option *ngFor="let municipio of municipios" [value]="municipio.value">
+                      {{ municipio.viewValue }}
+                  </md-option>
+                  <span *ngIf="!municipio.valid && municipio.touched" class="label label-danger">obligatorio</span>
+                </md-select>
               </md-card>
               <md-card>
                 AREA:
                 <md-input-container style="-webkit-margin-start: 5.5em">  							                             
-                  <input mdInput placeholder="-" #area="ngModel" name="area" [(ngModel)]="datos_.Area"  required>                             
+                  <input mdInput placeholder="Area" #area="ngModel" name="area" [(ngModel)]="datos_.Area"  required>                             
                   <span *ngIf="!area.valid && area.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 MANZANA:
                 <md-input-container style="-webkit-margin-start: 5.5em">  							                             
-                  <input mdInput placeholder="-" #manzana="ngModel" name="manzana" [(ngModel)]="datos_.Manzana"  required>                             
+                  <input mdInput placeholder="Manzana" #manzana="ngModel" name="manzana" [(ngModel)]="datos_.Manzana"  required>                             
                   <span *ngIf="!manzana.valid && manzana.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 CASA:
                 <md-input-container style="-webkit-margin-start: 5.5em">  							                             
-                  <input mdInput placeholder="-" #casa="ngModel" name="casa" [(ngModel)]="datos_.Casa"  required>                             
+                  <input mdInput placeholder="Casa" #casa="ngModel" name="casa" [(ngModel)]="datos_.Casa"  required>                             
                   <span *ngIf="!casa.valid && casa.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>   
               </md-card>
@@ -82,12 +88,12 @@
                 </md-toolbar> 
                 <hr>
                 PROPIETARIO:                
-                <md-input-container style="-webkit-margin-start: 2.5em;width: 350px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #propietarioNombre="ngModel" name="propietarioNombre" [(ngModel)]="datos_.Propieratio_Nombre"  required>                             
+                <md-input-container style="-webkit-margin-start: 2.5em;width: 300px;">  							                             
+                  <input mdInput placeholder="Nombre" #propietarioNombre="ngModel" name="propietarioNombre" [(ngModel)]="datos_.Propieratio_Nombre"  required>                             
                   <span *ngIf="!propietarioNombre.valid && propietarioNombre.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
-                <md-input-container style="-webkit-margin-start: 1.5em;width: 350px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #propietarioApellido="ngModel" name="propietarioApellido" [(ngModel)]="datos_.Propieratio_Apellido"  required>                             
+                <md-input-container style="-webkit-margin-start: 1.5em;width: 300px;">  							                             
+                  <input mdInput placeholder="Apellido" #propietarioApellido="ngModel" name="propietarioApellido" [(ngModel)]="datos_.Propieratio_Apellido"  required>                             
                   <span *ngIf="!propietarioApellido.valid && propietarioApellido.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>                 
                 <md-radio-group style="-webkit-margin-start: 2.5em"#tipoPersona="ngModel" name="tipoPersona" [(ngModel)]="datos_.Tipo_Persona" required >
@@ -103,24 +109,24 @@
                 </md-radio-group>                
                 NÚMERO:           
                 <md-input-container style="-webkit-margin-start: 2.5em; margin-right: 25px;width: 400px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #identificacion="ngModel" name="identificacion" [(ngModel)]="datos_.Indentificacion"  required  pattern="[0-9]+">                             
+                  <input mdInput placeholder="Indentificacion" #identificacion="ngModel" name="identificacion" [(ngModel)]="datos_.Indentificacion"  required  pattern="[0-9]+">                             
                   <span *ngIf="!identificacion.valid && identificacion.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 DV:                
-                <md-input-container style="-webkit-margin-start: 2.5em; margin-right: 25px;width: 90px;">  							                             
-                  <input mdInput maxlength="1" placeholder="NOMBRE" #dv="ngModel" name="dv" [(ngModel)]="datos_.DV"  required  pattern="[0-9]+">                             
+                <md-input-container style="-webkit-margin-start: 2.5em; margin-right: 25px;width: 10px;">  							                             
+                  <input mdInput maxlength="1" placeholder="DV" #dv="ngModel" name="dv" [(ngModel)]="datos_.DV"  required  pattern="[0-9]+">                             
                   <span *ngIf="!dv.valid && dv.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 <hr>
                 DIRECCIÓN DEL PROPIETARIO:                
                 <md-input-container style="-webkit-margin-start: 2.5em; margin-right: 25px;width: 700px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #direccionPro="ngModel" name="direccionPro" [(ngModel)]="datos_.Direccion_Propietario"  required>                             
+                  <input mdInput placeholder="Direccion" #direccionPro="ngModel" name="direccionPro" [(ngModel)]="datos_.Direccion_Propietario"  required>                             
                   <span *ngIf="!direccionPro.valid && direccionPro.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 <hr>
                 BARRIO O VEREDA:                
-                <md-input-container style="-webkit-margin-start: 2.5em; margin-right: 35px;width: 600px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #barrioPro="ngModel" name="barrioPro" [(ngModel)]="datos_.Barrio_Propietario"  required>                             
+                <md-input-container style="-webkit-margin-start: 2.5em; margin-right: 35px;width: 500px;">  							                             
+                  <input mdInput placeholder="Barrio" #barrioPro="ngModel" name="barrioPro" [(ngModel)]="datos_.Barrio_Propietario"  required>                             
                   <span *ngIf="!barrioPro.valid && barrioPro.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>                
                 <md-radio-group style="-webkit-margin-start: 6.5em;" #genero="ngModel" name="genero" [(ngModel)]="datos_.Genero">
@@ -129,16 +135,16 @@
                 </md-radio-group>
                 <hr>
                 TELÉFONO 1:                
-                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 300px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #telefonoPro="ngModel" name="telefonoPro" [(ngModel)]="datos_.Telefono_Propietario" pattern="[0-9]+">  
+                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 250px;">  							                             
+                  <input mdInput placeholder="Telefono" #telefonoPro="ngModel" name="telefonoPro" [(ngModel)]="datos_.Telefono_Propietario" pattern="[0-9]+">  
                 </md-input-container>
                 CELULAR / MÓVIL:                
-                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 300px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #celularPro="ngModel" name="celularPro" [(ngModel)]="datos_.Celular_Propietario" pattern="[0-9]+">
+                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 250px;">  							                             
+                  <input mdInput placeholder="Celular" #celularPro="ngModel" name="celularPro" [(ngModel)]="datos_.Celular_Propietario" pattern="[0-9]+">
                 </md-input-container>
                 E-MAIL:                
-                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 300px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #emailPro="ngModel" name="emailPro" [(ngModel)]="datos_.Email_Propietario"> 
+                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 250px;">  							                             
+                  <input mdInput placeholder="Email" #emailPro="ngModel" name="emailPro" [(ngModel)]="datos_.Email_Propietario"> 
                 </md-input-container>                
               </md-card>
               <hr>
@@ -148,8 +154,8 @@
                 </md-toolbar>
                 <hr>
                 NOMBRE DEL ESTABLECIMIENTO:                
-                <md-input-container style="-webkit-margin-start: 2.5em; width: 500px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #nombreEst="ngModel" name="nombreEst" [(ngModel)]="datos_.Nombre_Establecimiento"  required>                             
+                <md-input-container style="-webkit-margin-start: 2.5em; width: 300px;">  							                             
+                  <input mdInput placeholder="Nombre" #nombreEst="ngModel" name="nombreEst" [(ngModel)]="datos_.Nombre_Establecimiento"  required>                             
                   <span *ngIf="!nombreEst.valid && nombreEst.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 <md-radio-group style="-webkit-margin-start: 4.5em; margin-right: 30px;"#registrado="ngModel" name="registrado" [(ngModel)]="datos_.Registrado_en_Alcaldia">
@@ -157,58 +163,58 @@
                   <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let registrado of registrados" [value]="registrado">{{registrado}}</md-radio-button>
                 </md-radio-group>
                 DIRECCIÓN DEL ESTABLECIMIENTO: 
-                <md-input-container style="-webkit-margin-start: 1.5em; width: 700px;margin-right: 60px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #direccionEst="ngModel" name="direccionEst" [(ngModel)]="datos_.Direccion_Establecimiento"  required>                             
+                <md-input-container style="-webkit-margin-start: 1.5em; width: 450px;margin-right: 60px;">  							                             
+                  <input mdInput placeholder="Direccion" #direccionEst="ngModel" name="direccionEst" [(ngModel)]="datos_.Direccion_Establecimiento"  required>                             
                   <span *ngIf="!direccionEst.valid && direccionEst.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 N° REGISTRO: 
-                <md-input-container style="-webkit-margin-start: 1.5em;width: 50px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #numRegistro="ngModel" name="numRegistro" [(ngModel)]="datos_.Numero_Registro" pattern="[0-9]+"> 
+                <md-input-container style="-webkit-margin-start: 1.5em;width: 150px;">  							                             
+                  <input mdInput placeholder="Numero de Registro" #numRegistro="ngModel" name="numRegistro" [(ngModel)]="datos_.Numero_Registro" pattern="[0-9]+"> 
                 </md-input-container>
                 <hr>
                 BARRIO 0 VEREDA: 
                 <md-input-container style="-webkit-margin-start: 1.5em; width: 700px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #barrioEst="ngModel" name="barrioEst" [(ngModel)]="datos_.Barrio_Establecimiento"  required>                             
+                  <input mdInput placeholder="Barrio" #barrioEst="ngModel" name="barrioEst" [(ngModel)]="datos_.Barrio_Establecimiento"  required>                             
                   <span *ngIf="!barrioEst.valid && barrioEst.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 <hr>
                 TELÉFONO 1:                
-                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 300px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #telefonoEst="ngModel" name="telefonoEst" [(ngModel)]="datos_.Telefono_Establecimiento" pattern="[0-9]+"> 
+                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 250px;">  							                             
+                  <input mdInput placeholder="Telefono" #telefonoEst="ngModel" name="telefonoEst" [(ngModel)]="datos_.Telefono_Establecimiento" pattern="[0-9]+"> 
                 </md-input-container>
                 CELULAR / MÓVIL:                
-                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 300px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #celularEst="ngModel" name="celularEst" [(ngModel)]="datos_.Celular_Establecimiento" pattern="[0-9]+"> 
+                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 250px;">  							                             
+                  <input mdInput placeholder="Celular" #celularEst="ngModel" name="celularEst" [(ngModel)]="datos_.Celular_Establecimiento" pattern="[0-9]+"> 
                 </md-input-container>
                 E-MAIL:                
-                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 300px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #emailEst="ngModel" name="emailEst" [(ngModel)]="datos_.Email_Establecimiento">  
+                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 250px;">  							                             
+                  <input mdInput placeholder="Email" #emailEst="ngModel" name="emailEst" [(ngModel)]="datos_.Email_Establecimiento">  
                 </md-input-container> 
                 <hr>
                 CANTIDAD DE SUCURSALES:                
-                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 250px;">  							                             
-                  <input mdInput maxlength="4" placeholder="NOMBRE" #cantidadSuc="ngModel" name="cantidadSuc" [(ngModel)]="datos_.Cantidad_Sucursales" pattern="[0-9]+"> 
+                <md-input-container style="-webkit-margin-start: 1em; margin-right: 25px;width: 150px;">  							                             
+                  <input mdInput maxlength="4" placeholder="Cantidad de Sucursales" #cantidadSuc="ngModel" name="cantidadSuc" [(ngModel)]="datos_.Cantidad_Sucursales" pattern="[0-9]+"> 
                 </md-input-container> 
                 <md-radio-group style="-webkit-margin-start: 3.5em; margin-right: 60px;"#mayorista="ngModel" name="mayorista" [(ngModel)]="datos_.Mayorista"  >
                   MAYORISTA
                   <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let mayorista of mayoristas" [value]="mayorista">{{mayorista}}</md-radio-button>
                 </md-radio-group>
                 HORARIO DE ATENCIÓN:                
-                <md-input-container style="-webkit-margin-start: 1.5em; margin-right: 25px;width: 250px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #horarioAte="ngModel" name="horarioAte" [(ngModel)]="datos_.Horario_Atencion"pattern="[0-9]+"> 
+                <md-input-container style="-webkit-margin-start: 1.5em; margin-right: 25px;width: 150px;">  							                             
+                  <input mdInput placeholder="Horario de Atencion" #horarioAte="ngModel" name="horarioAte" [(ngModel)]="datos_.Horario_Atencion"pattern="[0-9]+"> 
                 </md-input-container> 
                 <hr>
-                <md-radio-group style="margin-right: 50px;"#contribuyente="ngModel" name="contribuyente" [(ngModel)]="datos_.Contribuyente" >
+                <md-radio-group style="margin-right: 20px;"#contribuyente="ngModel" name="contribuyente" [(ngModel)]="datos_.Contribuyente" >
                   CONTRIBUYENTE:
-                  <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let contribuyente of contribuyentes" [value]="contribuyente">{{contribuyente}}</md-radio-button>
+                  <md-radio-button style="-webkit-margin-start: 0.5em" *ngFor="let contribuyente of contribuyentes" [value]="contribuyente">{{contribuyente}}</md-radio-button>
                 </md-radio-group>
-                <md-radio-group style="-webkit-margin-start: 3.5em; margin-right: 50px;"#regimen="ngModel" name="regimen" [(ngModel)]="datos_.Regimen" >
+                <md-radio-group style="-webkit-margin-start: 2.5em; margin-right: 20px;"#regimen="ngModel" name="regimen" [(ngModel)]="datos_.Regimen" >
                   RÉGIMEN:
-                  <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let regimen of regimens" [value]="regimen">{{regimen}}</md-radio-button>
+                  <md-radio-button style="-webkit-margin-start: 0.5em" *ngFor="let regimen of regimens" [value]="regimen">{{regimen}}</md-radio-button>
                 </md-radio-group>
-                <md-radio-group style="-webkit-margin-start: 3.5em; margin-right: 50px;"#libroCon="ngModel" name="libroCon" [(ngModel)]="datos_.Libros_Contables" required >
+                <md-radio-group style="-webkit-margin-start: 2.5em; margin-right: 20px;"#libroCon="ngModel" name="libroCon" [(ngModel)]="datos_.Libros_Contables" required >
                   ¿LLEVA LIBROS CONTABLES?
-                  <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let libroCon of libroCons" [value]="libroCon">{{libroCon}}</md-radio-button>
+                  <md-radio-button style="-webkit-margin-start: 0.5em" *ngFor="let libroCon of libroCons" [value]="libroCon">{{libroCon}}</md-radio-button>
                   <span *ngIf="!libroCon.valid && libroCon.touched" class="label label-danger">obligatorio</span> 
                 </md-radio-group>
                 <hr>
@@ -217,18 +223,18 @@
                   <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let registradocc of registradoccs" [value]="registradocc">{{registradocc}}</md-radio-button>
                 </md-radio-group>
                 PROMEDIO DE INGRESO MENSUAL:                
-                <md-input-container style="-webkit-margin-start: 1.5em; margin-right: 25px;width: 550px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #promedioM="ngModel" name="promedioM" [(ngModel)]="datos_.Promedio_Ingreso_Mensual"  required pattern="[0-9]+">                             
+                <md-input-container style="-webkit-margin-start: 1.5em; margin-right: 25px;width: 400px;">  							                             
+                  <input mdInput placeholder="-" #promedioM="ngModel" name="promedioM" [(ngModel)]="datos_.Promedio_Ingreso_Mensual"  required pattern="[0-9]+">                             
                   <span *ngIf="!promedioM.valid && promedioM.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container> 
                 <hr>
                 NÚMERO DE MATRÍCULA:                
-                <md-input-container style="margin-right: 25px;width: 600px;">  							                             
-                  <input mdInput placeholder="NOMBRE" #numMatricula="ngModel" name="numMatricula" [(ngModel)]="datos_.Numero_Matricula"  > 
+                <md-input-container style="margin-right: 25px;width: 400px;">  							                             
+                  <input mdInput placeholder="Numero de Matricula" #numMatricula="ngModel" name="numMatricula" [(ngModel)]="datos_.Numero_Matricula"  > 
                 </md-input-container> 
                 FECHA DE MATRÍCULA CAMARA Y COMERCIO:
                 <md-input-container style="margin-left: 40px;margin-top: 20px;">                
-                  <input  mdInput [mdDatepicker]="picker1" placeholder="Elige una fecha" style="width: 200px;"
+                  <input  mdInput [mdDatepicker]="picker1" placeholder="Elige una fecha" style="width: 150px;" disabled ="disabled"
                     #fechaMat="ngModel" name="fechaMat" [(ngModel)]="datos_.Fecha_Matricula"  />
                   <button mdSuffix [mdDatepickerToggle]="picker1"></button>
                 </md-input-container>
@@ -236,17 +242,17 @@
                 <hr>
                 <md-radio-group style="margin-right: 50px;"#tipoPredio="ngModel" name="tipoPredio" [(ngModel)]="datos_.Tipo_Predio" required >
                   TIPO DE PREDIO:
-                  <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let tipoPredio of tipoPredios" [value]="tipoPredio">{{tipoPredio}}</md-radio-button>
+                  <md-radio-button style="-webkit-margin-start: 0.5em" *ngFor="let tipoPredio of tipoPredios" [value]="tipoPredio">{{tipoPredio}}</md-radio-button>
                   <span *ngIf="!tipoPredio.valid && tipoPredio.touched" class="label label-danger">obligatorio</span> 
                 </md-radio-group>
-                <md-radio-group style="-webkit-margin-start: 3.5em; margin-right: 50px;"#propiedad="ngModel" name="propiedad" [(ngModel)]="datos_.Propiedad" required >
+                <md-radio-group style="-webkit-margin-start: 2.5em; margin-right: 50px;"#propiedad="ngModel" name="propiedad" [(ngModel)]="datos_.Propiedad" required >
                   PROPIEDAD:
-                  <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let propiedad of propiedads" [value]="propiedad">{{propiedad}}</md-radio-button>
+                  <md-radio-button style="-webkit-margin-start: 0.5em" *ngFor="let propiedad of propiedads" [value]="propiedad">{{propiedad}}</md-radio-button>
                   <span *ngIf="!propiedad.valid && propiedad.touched" class="label label-danger">obligatorio</span> 
                 </md-radio-group>
-                <md-radio-group style="-webkit-margin-start: 3.5em; margin-right: 50px;"#sector="ngModel" name="sector" [(ngModel)]="datos_.Sector" required >
+                <md-radio-group style="-webkit-margin-start: 2.5em; margin-right: 50px;"#sector="ngModel" name="sector" [(ngModel)]="datos_.Sector" required >
                   SECTOR:
-                  <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let sector of sectors" [value]="sector">{{sector}}</md-radio-button>
+                  <md-radio-button style="-webkit-margin-start: 0.5em" *ngFor="let sector of sectors" [value]="sector">{{sector}}</md-radio-button>
                   <span *ngIf="!sector.valid && sector.touched" class="label label-danger">obligatorio</span> 
                 </md-radio-group>
                 <hr>
@@ -257,24 +263,24 @@
                 </md-radio-group>
                 NÚMERO DE EMPLEADOS: 
                 <md-input-container style="-webkit-margin-start: 1.5em;width: 50px;">  							                             
-                  <input mdInput maxlength="3" placeholder="APELLIDOS" #numEmpl="ngModel" name="numEmpl" [(ngModel)]="datos_.Numero_Empleados"  required pattern="[0-9]+">                             
+                  <input mdInput maxlength="3" placeholder="Numero de Empleados" #numEmpl="ngModel" name="numEmpl" [(ngModel)]="datos_.Numero_Empleados"  required pattern="[0-9]+">                             
                   <span *ngIf="!numEmpl.valid && numEmpl.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 <hr>
                 <h4>CODIGO DE LA ACTIVIDAD ECONÓMICA</h4>
                 PRINCIPAL: 
-                <md-input-container style="-webkit-margin-start: 1.5em;margin-right: 35px;">  							                             
-                  <input mdInput maxlength="4" placeholder="APELLIDOS" #codigoPrin="ngModel" name="codigoPrin" [(ngModel)]="datos_.Codigo_Principal" > 
+                <md-input-container style="-webkit-margin-start: 1.5em;margin-right: 30px;width: 125px;">  							                             
+                  <input mdInput maxlength="4" placeholder="Codigo Principal" #codigoPrin="ngModel" name="codigoPrin" [(ngModel)]="datos_.Codigo_Principal" > 
                 </md-input-container>
                 OTRAS: 
-                <md-input-container style="-webkit-margin-start: 1.5em;">  							                             
-                  <input mdInput maxlength="4" placeholder="APELLIDOS" #codigoOtr1="ngModel" name="codigoOtr1" [(ngModel)]="datos_.Codigo_Otras_1" >  
+                <md-input-container style="-webkit-margin-start: 1.5em;width: 125px;">  							                             
+                  <input mdInput maxlength="4" placeholder="Codigo" #codigoOtr1="ngModel" name="codigoOtr1" [(ngModel)]="datos_.Codigo_Otras_1" >  
                 </md-input-container>
-                <md-input-container style="-webkit-margin-start: 1.5em;">  							                             
-                  <input mdInput maxlength="4" placeholder="APELLIDOS" #codigoOtr2="ngModel" name="codigoOtr2" [(ngModel)]="datos_.Codigo_Otras_2" >  
+                <md-input-container style="-webkit-margin-start: 1.5em;width: 125px;">  							                             
+                  <input mdInput maxlength="4" placeholder="Codigo" #codigoOtr2="ngModel" name="codigoOtr2" [(ngModel)]="datos_.Codigo_Otras_2" >  
                 </md-input-container>
-                <md-input-container style="-webkit-margin-start: 1.5em;">  							                             
-                  <input mdInput maxlength="4" placeholder="APELLIDOS" #codigoOtr3="ngModel" name="codigoOtr3" [(ngModel)]="datos_.Codigo_Otras_3" > 
+                <md-input-container style="-webkit-margin-start: 1.5em;width: 125px;">  							                             
+                  <input mdInput maxlength="4" placeholder="Codigo" #codigoOtr3="ngModel" name="codigoOtr3" [(ngModel)]="datos_.Codigo_Otras_3" > 
                 </md-input-container>
                 <md-radio-group style="-webkit-margin-start: 4.5em;margin-right: 50px;"#avisosYT="ngModel" name="avisosYT" [(ngModel)]="datos_.Avisos_Y_Tableros" required >
                   AVISOS Y TABLEROS:
@@ -284,7 +290,7 @@
                 <hr>
                 DESCRIPCIÓN DE LA ACTIVIDAD OBSERVADA: 
                 <md-input-container style="-webkit-margin-start: 1.5em; width: 700px;margin-right: 60px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #descripcionAD="ngModel" name="descripcionAD" [(ngModel)]="datos_.Descripcion_Actividad"  required>                             
+                  <input mdInput placeholder="Descripcion de Actividad" #descripcionAD="ngModel" name="descripcionAD" [(ngModel)]="datos_.Descripcion_Actividad"  required>                             
                   <span *ngIf="!descripcionAD.valid && descripcionAD.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 <hr>
@@ -293,8 +299,8 @@
                   <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let pagoDia of pagoDias" [value]="pagoDia">{{pagoDia}}</md-radio-button>
                 </md-radio-group>
                 ULTIMO AÑO DECLARADO:
-                <md-input-container style="-webkit-margin-start: 1.5em;margin-right: 20px;">  							                             
-                  <input mdInput maxlength="4" placeholder="APELLIDOS" #ultimoAnio="ngModel" name="ultimoAnio" [(ngModel)]="datos_.Ultimo_Anio_Declarado" pattern="[0-9]+">                             
+                <md-input-container style="-webkit-margin-start: 1.5em;margin-right: 20px;width: 35px;">  							                             
+                  <input mdInput maxlength="4" placeholder="Ultimo Año Declarado" #ultimoAnio="ngModel" name="ultimoAnio" [(ngModel)]="datos_.Ultimo_Anio_Declarado" pattern="[0-9]+">                             
                   <span *ngIf="!ultimoAnio.valid && ultimoAnio.touched" class="label label-danger">obligatorio</span> 	
                 </md-input-container>
                 <md-radio-group style="-webkit-margin-start: 2.5em;margin-right: 50px;"#usoSuelo="ngModel" name="usoSuelo" [(ngModel)]="datos_.Uso_Suelo" >
@@ -310,25 +316,29 @@
                 <hr>
                 NOMBRE:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #nombreJ1="ngModel" name="nombreJ1" [(ngModel)]="datos_.Nombre_Juegos_1"> 
+                  <input mdInput placeholder="Nombre" #nombreJ1="ngModel" name="nombreJ1" [(ngModel)]="datos_.Nombre_Juegos_1"> 
                 </md-input-container>
                 CANTIDAD:
                 <md-input-container style="-webkit-margin-start: 1.5em;margin-right: 20px;">  							                             
-                  <input mdInput maxlength="4" placeholder="APELLIDOS" #cantidadJ1="ngModel" name="cantidadJ1" [(ngModel)]="datos_.Cantidad_Juegos_1" pattern="[0-9]+"> 
+                  <input mdInput maxlength="4" placeholder="Cantidad" #cantidadJ1="ngModel" name="cantidadJ1" [(ngModel)]="datos_.Cantidad_Juegos_1" pattern="[0-9]+"> 
                 </md-input-container>
                 <hr>
+                NOMBRE:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #nombreJ2="ngModel" name="nombreJ2" [(ngModel)]="datos_.Nombre_Juegos_2"> 
+                  <input mdInput placeholder="Nombre" #nombreJ2="ngModel" name="nombreJ2" [(ngModel)]="datos_.Nombre_Juegos_2"> 
                 </md-input-container>
+                CANTIDAD:
                 <md-input-container style="-webkit-margin-start: 1.5em;margin-right: 20px;">  							                             
-                  <input mdInput maxlength="4" placeholder="APELLIDOS" #cantidadJ2="ngModel" name="cantidadJ2" [(ngModel)]="datos_.Cantidad_Juegos_2" pattern="[0-9]+"> 
+                  <input mdInput maxlength="4" placeholder="Cantidad" #cantidadJ2="ngModel" name="cantidadJ2" [(ngModel)]="datos_.Cantidad_Juegos_2" pattern="[0-9]+"> 
                 </md-input-container>
                 <hr>
+                NOMBRE:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #nombreJ3="ngModel" name="nombreJ3" [(ngModel)]="datos_.Nombre_Juegos_3">   
+                  <input mdInput placeholder="Nombre" #nombreJ3="ngModel" name="nombreJ3" [(ngModel)]="datos_.Nombre_Juegos_3">   
                 </md-input-container>
+                CANTIDAD:
                 <md-input-container style="-webkit-margin-start: 1.5em;margin-right: 20px;">  							                             
-                  <input mdInput maxlength="4" placeholder="APELLIDOS" #cantidadJ3="ngModel" name="cantidadJ3" [(ngModel)]="datos_.Cantidad_Juegos_3" pattern="[0-9]+">
+                  <input mdInput maxlength="4" placeholder="Cantidad" #cantidadJ3="ngModel" name="cantidadJ3" [(ngModel)]="datos_.Cantidad_Juegos_3" pattern="[0-9]+">
                 </md-input-container>
               </md-card>
               <hr>
@@ -373,7 +383,7 @@
                 <hr>
                 <p>
                   <md-input-container >
-                    <textarea style="margin: 0px; width: 576px; height: 112px;" mdInput placeholder="Address 2" #observaciones="ngModel" name="observaciones" [(ngModel)]="datos_.Observaciones"></textarea>
+                    <textarea style="margin: 0px; width: 800px; height: 125px;" mdInput placeholder="Observaciones" #observaciones="ngModel" name="observaciones" [(ngModel)]="datos_.Observaciones"></textarea>
                   </md-input-container>
                 </p>
               </md-card>
@@ -388,9 +398,10 @@
                   <md-radio-button style="-webkit-margin-start: 1.5em" *ngFor="let primeraVi of primeraVis" [value]="primeraVi">{{primeraVi}}</md-radio-button>
                   <span *ngIf="!primeraVi.valid && primeraVi.touched" class="label label-danger">obligatorio</span> 
                 </md-radio-group>
+                <hr>
                 <h4>Segunda Visita</h4>
                 <md-input-container style="margin-left: 40px;margin-top: 20px;">                
-                  <input  mdInput [mdDatepicker]="picker3" placeholder="Elige una fecha" style="width: 200px;"
+                  <input  mdInput [mdDatepicker]="picker3" placeholder="Elige una fecha" style="width: 200px;" disabled ="disabled"
                     #fechaVi="ngModel" name="fechaVi" [(ngModel)]="datos_.Visita_Fecha"   />
                   <button mdSuffix [mdDatepickerToggle]="picker3"></button>
                 </md-input-container>
@@ -408,19 +419,19 @@
                 <hr>
                 NOMBRE:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #nombreRE="ngModel" name="nombreRE" [(ngModel)]="datos_.Nombre_Responsable_Establecimiento">     
+                  <input mdInput placeholder="Nombre" #nombreRE="ngModel" name="nombreRE" [(ngModel)]="datos_.Nombre_Responsable_Establecimiento">     
                 </md-input-container>
                 CC:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #IdentificacionRE="ngModel" name="IdentificacionRE" [(ngModel)]="datos_.Identificacion_Responsable_Establecimiento" pattern="[0-9]+"> 
+                  <input mdInput placeholder="Identificacion" #IdentificacionRE="ngModel" name="IdentificacionRE" [(ngModel)]="datos_.Identificacion_Responsable_Establecimiento" pattern="[0-9]+"> 
                 </md-input-container>
                 CARGO:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #cargoRE="ngModel" name="cargoRE" [(ngModel)]="datos_.Cargo__Responsable_Establecimiento" > 
+                  <input mdInput placeholder="Cargo" #cargoRE="ngModel" name="cargoRE" [(ngModel)]="datos_.Cargo__Responsable_Establecimiento" > 
                 </md-input-container>
                 FIRMA:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #FirmaRE="ngModel" name="FirmaRE" [(ngModel)]="datos_.Firma__Responsable_Establecimiento" > 
+                  <input mdInput placeholder="Firma" #FirmaRE="ngModel" name="FirmaRE" [(ngModel)]="datos_.Firma__Responsable_Establecimiento" > 
                 </md-input-container>
               </md-card>
               <hr>
@@ -431,19 +442,19 @@
                 <hr>
                 NOMBRE:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #nombreREcu="ngModel" name="nombreREcu" [(ngModel)]="datos_.Nombre_Responsable_Ensuesta" >
+                  <input mdInput placeholder="Nombre" #nombreREcu="ngModel" name="nombreREcu" [(ngModel)]="datos_.Nombre_Responsable_Ensuesta" >
                 </md-input-container>
                 CC:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #IdentificacionREcu="ngModel" name="IdentificacionREcu" [(ngModel)]="datos_.Indentificacion_Responsable_Ensuesta" pattern="[0-9]+">
+                  <input mdInput placeholder="Identificacion" #IdentificacionREcu="ngModel" name="IdentificacionREcu" [(ngModel)]="datos_.Indentificacion_Responsable_Ensuesta" pattern="[0-9]+">
                 </md-input-container>
                 CARGO:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #cargoREcu="ngModel" name="cargoREcu" [(ngModel)]="datos_.Cargo_Responsable_Ensuesta"> 
+                  <input mdInput placeholder="Cargo" #cargoREcu="ngModel" name="cargoREcu" [(ngModel)]="datos_.Cargo_Responsable_Ensuesta"> 
                 </md-input-container>
                 FIRMA:
                 <md-input-container style="margin-right: 20px;">  							                             
-                  <input mdInput placeholder="APELLIDOS" #FirmaREcu="ngModel" name="FirmaREcu" [(ngModel)]="datos_.Firma_Responsable_Ensuesta"> 
+                  <input mdInput placeholder="Firma" #FirmaREcu="ngModel" name="FirmaREcu" [(ngModel)]="datos_.Firma_Responsable_Ensuesta"> 
                 </md-input-container>
               </md-card>
               <hr>

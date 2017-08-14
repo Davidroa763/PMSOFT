@@ -35,18 +35,18 @@ export class CensoTributarioComponent{
 	){
 		this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 		this.titulo = 'Crear un nuevo dato';
-    this.fechaActual = new Date();
+    this.fechaActual = new Date;
 	this.datos_ = new CensoTributarioModel(new Date,'',0,0,0,
-					'','','','',0,0,'','','',0,0,'',
-					'','','',0,'',0,0,'',0,'','','','','','',0,
-					'',new Date,'','','','',0,'','','','','','','',0,'',
-					'',0,'',0,'',0,
-					'','','','','','',
-					'',
-					'',new Date,'',
-					'',0,'','',
-					'',0,'','',
-					'',new Date,'',new Date,'',);
+	'','','','',0,0,'','','',0,0,'',
+	'','','',0,'',0,0,'',0,'','','','','','',0,
+	'','','','','','',0,'','','','','','','',0,'',
+	'',0,'',0,'',0,
+	'','','','','','',
+	'',
+	'','','',
+	'',0,'','',
+	'',0,'','',
+	'',this.fechaActual,'',this.fechaActual,'',);
   }
 
 	ngOnInit(){
@@ -71,16 +71,16 @@ export class CensoTributarioComponent{
 			if(response.code == 200){
 				this.SnackOn(message, action)
 				this.datos_ = new CensoTributarioModel(new Date,'',0,0,0,
-					'','','','',0,0,'','','',0,0,'',
-					'','','',0,'',0,0,'',0,'','','','','','',0,
-					'',new Date,'','','','',0,'','','','','','','',0,'',
-					'',0,'',0,'',0,
-					'','','','','','',
-					'',
-					'',new Date,'',
-					'',0,'','',
-					'',0,'','',
-					'',new Date,'',new Date,'',);
+				'','','','',0,0,'','','',0,0,'',
+				'','','',0,'',0,0,'',0,'','','','','','',0,
+				'','','','','','',0,'','','','','','','',0,'',
+				'',0,'',0,'',0,
+				'','','','','','',
+				'',
+				'','','',
+				'',0,'','',
+				'',0,'','',
+				this.user.firstName +' '+ this.user.lastName,this.fechaActual,this.user.firstName +' '+ this.user.lastName,this.fechaActual,'',);
 				
 			}else{
 				console.log(response);
@@ -103,16 +103,16 @@ export class CensoTributarioComponent{
 			if(response.code == 200){
 				this.SnackOn(message, action)
 				this.datos_ = new CensoTributarioModel(new Date,'',0,0,0,
-					'','','','',0,0,'','','',0,0,'',
-					'','','',0,'',0,0,'',0,'','','','','','',0,
-					'',new Date,'','','','',0,'','','','','','','',0,'',
-					'',0,'',0,'',0,
-					'','','','','','',
-					'',
-					'',new Date,'',
-					'',0,'','',
-					'',0,'','',
-					'',new Date,'',new Date,'',);
+				'','','','',0,0,'','','',0,0,'',
+				'','','',0,'',0,0,'',0,'','','','','','',0,
+				'','','','','','',0,'','','','','','','',0,'',
+				'',0,'',0,'',0,
+				'','','','','','',
+				'',
+				'','','',
+				'',0,'','',
+				'',0,'','',
+				this.user.firstName +' '+ this.user.lastName,this.fechaActual,this.user.firstName +' '+ this.user.lastName,this.fechaActual,'',);
 				
 			}else{
 				console.log(response);
@@ -139,7 +139,37 @@ export class CensoTributarioComponent{
 		duration: 2000,
 		});
 	};
-
+	municipios = [
+		{value: 'Anolaima', viewValue: 'Anolaima'},
+		{value: 'Arbelaez', viewValue: 'Arbeláez'},
+		{value: 'Caparrapi', viewValue: 'Caparrapí'},
+		{value: 'Choachi', viewValue: 'Choachí'},
+		{value: 'Cucunuba', viewValue: 'Cucunubá'},
+		{value: 'Fomeque', viewValue: 'Fomeque'},
+		{value: 'Gachala', viewValue: 'Gachalá'},
+		{value: 'Gachancipa', viewValue: 'Gachancipá'},
+		{value: 'Guataqui', viewValue: 'Guataquí'},
+		{value: 'Jerusalen', viewValue: 'Jerusalén'},
+		{value: 'La Calera', viewValue: 'La Calera'},
+		{value: 'La Vega', viewValue: 'La Vega'},
+		{value: 'Medina', viewValue: 'Medina'},
+		{value: 'Nariño', viewValue: 'Nariño'},
+		{value: 'Pacho', viewValue: 'Pacho'},
+		{value: 'Paratebueno', viewValue: 'Paratebueno'},
+		{value: 'Pasca', viewValue: 'Pasca'},
+		{value: 'San Bernardo', viewValue: 'San Bernardo'},
+		{value: 'San Cayetano', viewValue: 'San Cayetano'},
+		{value: 'San Juan de Rioseco', viewValue: 'San Juan de Rioseco'},
+		{value: 'Sibate', viewValue: 'Sibaté'},
+		{value: 'Sopo', viewValue: 'Sopó'},
+		{value: 'Suesca', viewValue: 'Suesca'},
+		{value: 'Supata', viewValue: 'Supatá'},
+		{value: 'Sutatausa', viewValue: 'Sutatausa'},
+		{value: 'Tibacuy', viewValue: 'Tibacuy'},
+		{value: 'Tocaima', viewValue: 'Tocaima'},
+		{value: 'Topaipi', viewValue: 'Topaipí'},
+		{value: 'Zipaquira', viewValue: 'Zipaquirá'}
+	];
 	tipoPersonas = [
 		'NATURAL',
 		'JURIDICA',

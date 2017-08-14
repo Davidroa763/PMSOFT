@@ -36,7 +36,7 @@ export class CensoTributarioModel{
         public Registro_CamaraYComercio: String,
         public Promedio_Ingreso_Mensual: Number,
         public Numero_Matricula: String,
-        public Fecha_Matricula: Date,
+        public Fecha_Matricula: String,
         public Tipo_Predio: String,
         public Propiedad: String,
         public Sector: String,
@@ -69,7 +69,7 @@ export class CensoTributarioModel{
         public Observaciones: String,
         //Estado Entrevista
         public Primera_Visita: String,
-        public Visita_Fecha: Date,
+        public Visita_Fecha: String,
         public Segunda_Visita: String,
          //Persona Responsable Del Establecimiento
         public Nombre_Responsable_Establecimiento: String,
